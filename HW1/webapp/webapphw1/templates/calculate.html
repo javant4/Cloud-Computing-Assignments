@@ -1,0 +1,23 @@
+<form method="post" action="">
+{% csrf_token %}
+<h3>Enter the values below to find the solution to the quadratic equation!</h3>
+<p>From: ax^2 + bx + c</p>
+<table>
+  {% for field in form %}
+    <tr>
+    <td>{{ field.name }}</td>
+    <td>{{ field }}</td>
+    <td>{{ field.label }}</td>
+    <td>{{ field.errors }}</td>
+    <td></td>
+    </tr>
+  {% endfor %}
+</table>
+<p><input type=submit value=Calculate></form></p>
+
+<p>
+{% if result != None %}
+{% load static %}
+<img src="{% get_static_prefix %}{{ result }}">
+{% endif %}
+</p>
